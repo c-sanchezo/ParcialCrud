@@ -1,0 +1,152 @@
+﻿@model ParcialCelesteCrud.Models.Videojuegos
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh; background-color: #f5f8fb;">
+    <div class="card shadow-sm" style="max-width: 500px; width: 100%; padding: 30px; border-radius: 10px; background-color: #ffffff;">
+        <h2 class="text-danger text-center mb-4">Eliminar Videojuego</h2>
+        <hr class="mb-4" style="border-top: 2px solid #dc3545;" />
+        
+        <h3 class="text-center mb-4">¿Está seguro de que desea eliminar este videojuego?</h3>
+
+        <div>
+            <h4 class="text-center">Detalles del Videojuego</h4>
+            <hr />
+
+            <dl class="row">
+                <dt class="col-sm-4 text-end">
+                    @Html.DisplayNameFor(model => model.nombre)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.nombre)
+                </dd>
+
+                <dt class="col-sm-4 text-end">
+                    @Html.DisplayNameFor(model => model.precio)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.precio)
+                </dd>
+
+                <dt class="col-sm-4 text-end">
+                    @Html.DisplayNameFor(model => model.stock)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.stock)
+                </dd>
+
+                <dt class="col-sm-4 text-end">
+                    @Html.DisplayNameFor(model => model.fecha_lanzamiento)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.fecha_lanzamiento)
+                </dd>
+
+                <dt class="col-sm-4 text-end">
+                    @Html.DisplayNameFor(model => model.CategoriaId)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.CategoriaId)
+                </dd>
+            </dl>
+        </div>
+
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions text-center">
+                <button type="submit" class="btn btn-danger px-4 py-2 w-100 mb-3">
+                    <i class="bi bi-trash"></i> Eliminar
+                </button>
+                <div>
+                    @Html.ActionLink("Volver a la Lista", "Index", null, new { @class = "btn btn-outline-secondary px-4 py-2" })
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f5f8fb;
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        font-weight: bold;
+        color: #dc3545;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        transition: background-color 0.3s, border-color 0.3s;
+        border-radius: 25px;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+    .btn-outline-secondary {
+        background-color: transparent;
+        border-color: #6c757d;
+        color: #6c757d;
+        transition: background-color 0.3s;
+        border-radius: 25px;
+    }
+
+    .btn-outline-secondary:hover {
+        background-color: #e2e6ea;
+        color: #495057;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .form-control:focus {
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+        border-color: #007bff;
+    }
+
+    .card {
+        border-radius: 10px;
+    }
+
+    .d-flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .dl-horizontal dt {
+        text-align: right;
+        font-weight: bold;
+    }
+
+    .dl-horizontal dd {
+        margin-bottom: 10px;
+    }
+
+    .text-end {
+        text-align: end;
+    }
+
+    .form-actions {
+        margin-top: 20px;
+    }
+</style>

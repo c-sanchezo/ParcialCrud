@@ -1,0 +1,132 @@
+﻿@model ParcialCelesteCrud.Models.Clientes
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh; background-color: #f9f7e6;">
+    <div class="card shadow-sm" style="max-width: 600px; width: 100%; padding: 30px; border-radius: 10px; background-color: #ffffff;">
+        <h2 class="text-warning text-center mb-4">Editar Cliente</h2>
+        <hr class="mb-4" style="border-top: 2px solid #ffcc00;" />
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ClienteId)
+
+                <div class="form-group row mb-3">
+                    @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-sm-4 text-end" })
+                    <div class="col-sm-8">
+                        @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                    @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-sm-4 text-end" })
+                    <div class="col-sm-8">
+                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                    @Html.LabelFor(model => model.telefono, htmlAttributes: new { @class = "control-label col-sm-4 text-end" })
+                    <div class="col-sm-8">
+                        @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                    @Html.LabelFor(model => model.tipo_cliente, htmlAttributes: new { @class = "control-label col-sm-4 text-end" })
+                    <div class="col-sm-8">
+                        @Html.EditorFor(model => model.tipo_cliente, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.tipo_cliente, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row text-center">
+                    <div class="col-sm-12">
+                        <input type="submit" value="Guardar" class="btn btn-warning px-4 py-2 mb-2" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="text-center mt-4">
+            @Html.ActionLink("Volver a la lista", "Index", null, new { @class = "btn btn-outline-warning px-4 py-2 mb-2" })
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f9f7e6;
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        font-weight: bold;
+        color: #ffcc00;
+    }
+
+    .btn-warning {
+        background-color: #ffcc00;
+        border-color: #ffcc00;
+        transition: background-color 0.3s, border-color 0.3s;
+        border-radius: 25px;
+    }
+
+        .btn-warning:hover {
+            background-color: #e6b800;
+            border-color: #b38f00;
+        }
+
+    .btn-outline-warning {
+        background-color: transparent;
+        border-color: #ffcc00;
+        color: #ffcc00;
+        transition: background-color 0.3s;
+        border-radius: 25px;
+    }
+
+        .btn-outline-warning:hover {
+            background-color: #ffe066;
+            color: #e6a800;
+        }
+
+    .card {
+        border-radius: 10px;
+    }
+
+    .d-flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .form-horizontal .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+        .form-horizontal .form-group .control-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+    .text-end {
+        text-align: end;
+    }
+</style>

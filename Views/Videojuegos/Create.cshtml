@@ -1,0 +1,148 @@
+﻿@model ParcialCelesteCrud.Models.Videojuegos
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh; background-color: #f5f8fb;">
+    <div class="card shadow-sm" style="max-width: 500px; width: 100%; padding: 30px; border-radius: 10px; background-color: #ffffff;">
+        <h2 class="text-primary text-center mb-4">Crear Videojuego</h2>
+        <hr class="mb-4" style="border-top: 2px solid #007bff;" />
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4 class="text-center">Detalles del Videojuego</h4>
+                <hr />
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger text-center" })
+
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "form-label fw-bold" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.precio, htmlAttributes: new { @class = "form-label fw-bold" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.precio, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.precio, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.stock, htmlAttributes: new { @class = "form-label fw-bold" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.stock, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.stock, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.fecha_lanzamiento, htmlAttributes: new { @class = "form-label fw-bold" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.fecha_lanzamiento, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.fecha_lanzamiento, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.CategoriaId, htmlAttributes: new { @class = "form-label fw-bold" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.CategoriaId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CategoriaId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary px-4 py-2 mt-3 w-100">
+                        <i class="bi bi-check-circle"></i> Crear Videojuego
+                    </button>
+                </div>
+            </div>
+        }
+
+        <div class="text-center mt-4">
+            @Html.ActionLink("Volver a la Lista", "Index", null, new { @class = "btn btn-outline-secondary px-4 py-2" })
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f5f8fb;
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        font-weight: bold;
+        color: #007bff;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        transition: background-color 0.3s, border-color 0.3s;
+        border-radius: 25px;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+    .btn-secondary, .btn-outline-secondary {
+        background-color: transparent;
+        border-color: #6c757d;
+        color: #6c757d;
+        transition: background-color 0.3s;
+        border-radius: 25px;
+    }
+
+        .btn-secondary:hover, .btn-outline-secondary:hover {
+            background-color: #e2e6ea;
+            color: #495057;
+        }
+
+    .form-control {
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+        .form-control:focus {
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+            border-color: #007bff;
+        }
+
+    .col-md-12 {
+        margin-bottom: 15px;
+    }
+
+    .card {
+        border-radius: 10px;
+    }
+
+    .form-horizontal .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .d-flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+</style>

@@ -1,0 +1,110 @@
+﻿@model IEnumerable<ParcialCelesteCrud.Models.Clientes>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5" style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-primary">Lista de Clientes</h2>
+        @Html.ActionLink("Crear Nuevo", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-primary">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.nombre)</th>
+                    <th>@Html.DisplayNameFor(model => model.email)</th>
+                    <th>@Html.DisplayNameFor(model => model.telefono)</th>
+                    <th>@Html.DisplayNameFor(model => model.tipo_cliente)</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.nombre)</td>
+                        <td>@Html.DisplayFor(modelItem => item.email)</td>
+                        <td>@Html.DisplayFor(modelItem => item.telefono)</td>
+                        <td>@Html.DisplayFor(modelItem => item.tipo_cliente)</td>
+                        <td class="text-center">
+                            <a href="@Url.Action("Edit", new { id = item.ClienteId })" class="btn btn-warning btn-sm me-1" title="Editar">
+                                <i class="bi bi-pencil"></i> Editar
+                            </a>
+                            <a href="@Url.Action("Details", new { id = item.ClienteId })" class="btn btn-info btn-sm me-1" title="Detalles">
+                                <i class="bi bi-info-circle"></i> Detalles
+                            </a>
+                            <a href="@Url.Action("Delete", new { id = item.ClienteId })" class="btn btn-danger btn-sm" title="Eliminar">
+                                <i class="bi bi-trash"></i> Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+    }
+
+    h2 {
+        font-weight: bold;
+    }
+
+    .table {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+    .btn {
+        border-radius: 5px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+    }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+        }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+    }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+    .table-primary {
+        background-color: #d1ecf1;
+        color: #0c5460;
+    }
+</style>
